@@ -31,7 +31,8 @@ def SalaryApi(request):
                 converted_record['PREVAILING_WAGE'] = record['PREVAILING_WAGE'] * 52
             elif record['PW_UNIT_OF_PAY'] == 'Bi-Weekly':
                 converted_record['PREVAILING_WAGE'] = record['PREVAILING_WAGE'] * 26
-            converted_data.append(converted_record)
+            if converted_record:
+                converted_data.append(converted_record)
 
         # Calculate average salary
         total_salary = sum(record['PREVAILING_WAGE'] if record['PREVAILING_WAGE'] else 0 for record in converted_data)
