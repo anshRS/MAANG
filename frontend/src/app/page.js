@@ -1,8 +1,11 @@
+import Navbar from "../components/Navbar.js"
+
+
 export default function Home() {
   return (
     <>
-    <div className='border-black border-2 h-14 gap-2.5 m-2'>
-      Topbar
+    <div className= ''>
+      <Navbar />
     </div>
 
 
