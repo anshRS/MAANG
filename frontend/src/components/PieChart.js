@@ -20,13 +20,20 @@ function pie() {
         datasets: [
             {
                 data: [3, 6, 9],
-                backgroundColor: ['aqua','orange','green']
+                backgroundColor: ['aqua','orange','green'],
+                hoverOffset: 4
             }
         ]
     }
 
-    const options = {
 
+
+    const options = {
+        plugins: {
+            legend: {
+              position: 'left',
+            },
+          },
     }
 
     return (
