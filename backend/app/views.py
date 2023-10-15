@@ -55,3 +55,10 @@ def SalaryApi(request):
         seventyfive_percentile_salary =f"{seventyfive_percentile_salary:.2f}"
 
         return Response({'total_records': total, 'mean_salary':average_salary, 'median_salary':median_salary, 'twentyfive':twentyfive_percentile_salary, 'seventyfive':seventyfive_percentile_salary})   
+
+def GraphApi(request):
+    if request.method == 'GET':
+        records = VisaApplication.objects.all()  
+        record_serializer = VisaSerializer(records, many=True)   
+        list_of_dict=record_serializer.data
+        return Response({'pie_details': 0})
