@@ -9,13 +9,23 @@ import axiosInst from "@/utils/axios";
 
 export default function Home() {
   const [numberOfRecords, setNumberOfRecords] = useState(0);
+  const [meanSalary, setmeanSalary] = useState(0);
+  const [medianSalary, setMedianSalary] = useState(0);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axiosInst.get("/api/v1/totalrecords");
-        console.log(response)
+        let response = await axiosInst.get("/api/v1/totalrecords");
         setNumberOfRecords(response.data.total_records);
+        
+        response = await axiosInst.get("/api/v1/meansalary");
+        console.log(response);
+        setmeanSalary(response.data.mean_salary);
+
+        response = await axiosInst.get("/api/v1/mediansalary");
+        console.log(response);
+        setMedianSalary(response.data.median_salary);
+
       } catch (err) {
         console.log(err);
       }
@@ -34,8 +44,8 @@ export default function Home() {
         <div className="grid grid-cols-5 w-full items-center justify-center gap-4">
           
             <Card title="Number of Records" value={numberOfRecords} />
-            <Card title="Mean Salary" value={numberOfRecords} />
-            <Card title="Median Salary" value={numberOfRecords} />
+            <Card title="Mean Salary" value={meanSalary} />
+            <Card title="Median Salary" value={medianSalary} />
             <Card title="25th Percentile Salary" value={numberOfRecords} />
             <Card title="75th Percentile Salary" value={numberOfRecords} />
         
