@@ -72,5 +72,28 @@ def medianSalaryApi(request):
 def percentileSalaryApi(request):
     if request.method == 'GET':
             records = VisaApplication.objects.all()  
-            record_serializer = VisaSerializer(records, many=True)            
-            return Response(record_serializer.data)
+            record_serializer = VisaSerializer(records, many=True)  
+            list_of_dict=record_serializer.data
+            converted_salaries = []
+            for record in list_of_dict:
+                converted_salary = record['PREVAILING_WAGE']
+                if record['PW_UNIT_OF_PAY'] == 'Hour':
+                    converted_salary *= 2080  # Assuming 40 hours/week and 52 weeks/year
+                elif record['PW_UNIT_OF_PAY'] == 'Month':
+                    converted_salary *= 12
+                elif record['PW_UNIT_OF_PAY'] == 'Week':
+                    converted_salary *= 52
+                elif record['PW_UNIT_OF_PAY'] == 'Bi-Weekly':
+                    converted_salary *= 26
+                converted_salaries.append(converted_salary)
+            # Sort the salaries in ascending order.
+            sorted_salaries = sorted(converted_salaries)   
+            # Calculate the 25th percentile salary.
+            twentyfive_percentile_index_ = int(0.25 * len(sorted_salaries))
+            twentyfive_percentile_salary = sorted_salaries[twentyfive_percentile_index_]    
+            # Calculate the 75th percentile salary.
+            seventyfive_percentile_index = int(0.75 * len(sorted_salaries))
+            seventyfive_percentile_salary = sorted_salaries[seventyfive_percentile_index]
+            twentyfive_percentile_salary =f"{twentyfive_percentile_salary:.2f}"
+            seventyfive_percentile_salary =f"{seventyfive_percentile_salary:.2f}"
+            return Response({'twentyfive':twentyfive_percentile_salary, 'seventyfive':seventyfive_percentile_salary})
