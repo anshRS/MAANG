@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar.js"
 import Card from "@/components/Card.js"
 import { CardsData } from "@/constants/constants"
+import BarGraph from "@/components/BarGraph"
 
 
 
@@ -19,7 +20,7 @@ export default function Home() {
       </div>
 
       <div className='flex w-full items-center justify-center gap-2.5 h-96 p-2'>
-        <div className='flex basis-2/3 items-center justify-center bg-black text-white rounded-lg h-full'>Main Graph</div>
+        <BarGraph/>
         <div className='flex basis-1/3 items-center justify-center bg-black text-white rounded-lg h-full'>Sub Graph</div>
       </div>
 
