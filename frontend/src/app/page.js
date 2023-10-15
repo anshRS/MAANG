@@ -11,6 +11,7 @@ export default function Home() {
   const [numberOfRecords, setNumberOfRecords] = useState(0);
   const [meanSalary, setmeanSalary] = useState(0);
   const [medianSalary, setMedianSalary] = useState(0);
+  const [percentileSalary, setPercentileSalary] = useState({twentyfive:"",seventyfive:""});
 
   useEffect(() => {
     async function fetchData() {
@@ -19,12 +20,13 @@ export default function Home() {
         setNumberOfRecords(response.data.total_records);
         
         response = await axiosInst.get("/api/v1/meansalary");
-        console.log(response);
         setmeanSalary(response.data.mean_salary);
 
         response = await axiosInst.get("/api/v1/mediansalary");
-        console.log(response);
         setMedianSalary(response.data.median_salary);
+        
+        response = await axiosInst.get("/api/v1/percentilesalary");
+        setPercentileSalary(response.data);
 
       } catch (err) {
         console.log(err);
@@ -46,28 +48,28 @@ export default function Home() {
             <Card title="Number of Records" value={numberOfRecords} />
             <Card title="Mean Salary" value={meanSalary} />
             <Card title="Median Salary" value={medianSalary} />
-            <Card title="25th Percentile Salary" value={numberOfRecords} />
-            <Card title="75th Percentile Salary" value={numberOfRecords} />
+            <Card title="25th Percentile Salary" value={percentileSalary.twentyfive} />
+            <Card title="75th Percentile Salary" value={percentileSalary.seventyfive} />
         
         </div>
 
         <div className="grid grid-cols-3 gap-3 justify-center">
-          <div className="flex col-span-2 items-center justify-center rounded-lg bg-black p-4 h-80">
+          <div className="flex col-span-2 items-center justify-center rounded-xl bg-black p-4 h-80">
             <LineChart />
           </div>
-            <div className="flex items-center justify-center bg-black p-4 text-white rounded-lg ">
+            <div className="flex items-center justify-center bg-black p-4 text-white rounded-xl ">
               Sub Graph
             </div>
         </div>
 
         <div className="flex items-center justify-center gap-3 h-60 ">
-          <div className="flex basis-1/3 p-4 items-center justify-center bg-black text-white rounded-lg h-full">
+          <div className="flex basis-1/3 p-4 items-center justify-center bg-black text-white rounded-xl h-full">
             <PieChart />
           </div>
-          <div className="flex basis-1/3 p-4 items-center justify-center bg-black text-white rounded-lg h-full">
+          <div className="flex basis-1/3 p-4 items-center justify-center bg-black text-white rounded-xl h-full">
             <BarGraph />
           </div>
-          <div className="flex basis-1/3 items-center justify-center bg-black text-white rounded-lg h-full">
+          <div className="flex basis-1/3 items-center justify-center bg-black text-white rounded-xl h-full">
             Main Graph
           </div>
         </div>
