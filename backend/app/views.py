@@ -56,6 +56,7 @@ def SalaryApi(request):
 
         return Response({'total_records': total, 'mean_salary':average_salary, 'median_salary':median_salary, 'twentyfive':twentyfive_percentile_salary, 'seventyfive':seventyfive_percentile_salary})   
 
+@api_view(['GET', 'POST'])
 def GraphApi(request):
     if request.method == 'GET':
         records = VisaApplication.objects.all()  
@@ -63,6 +64,8 @@ def GraphApi(request):
         data=record_serializer.data
         counts = {'Y': 0, 'N': 0}
         for record in data:
-            h1b_dependent = record['H-1B_DEPENDENT']
-            counts[h1b_dependent] += 1
+            h1b_dependent = record['H1B_DEPENDENT']
+            print(h1b_dependent)
+            if h1b_dependent:
+                counts[h1b_dependent] += 1
         return Response({'pie_details': counts})
