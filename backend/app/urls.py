@@ -3,4 +3,5 @@ from app import views
 
 urlpatterns = [
     path('salaryrecords/', views.SalaryApi, name='total-records'),       
+    path('graphdata/', views.SalaryApi, name='total-records'),       
 ]
