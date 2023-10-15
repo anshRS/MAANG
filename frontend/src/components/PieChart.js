@@ -14,7 +14,7 @@ ChartJS.register(
     Legend
 )
 
-function bar() {
+function pie() {
     const data = {
         labels: ['New York', 'Las Vegas', 'Texas'],
         datasets: [
@@ -30,7 +30,7 @@ function bar() {
     }
 
     return (
-        <div className='h-fit w-fit'>
+        <div className='h-full w-full flex justify-center'>
             <Pie
                 data = {data}
                 options = {options}
@@ -39,4 +39,4 @@ function bar() {
     )
 }
 
-export default bar
+export default pie
