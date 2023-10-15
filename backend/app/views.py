@@ -60,5 +60,9 @@ def GraphApi(request):
     if request.method == 'GET':
         records = VisaApplication.objects.all()  
         record_serializer = VisaSerializer(records, many=True)   
-        list_of_dict=record_serializer.data
-        return Response({'pie_details': 0})
+        data=record_serializer.data
+        counts = {'Y': 0, 'N': 0}
+        for record in data:
+            h1b_dependent = record['H-1B_DEPENDENT']
+            counts[h1b_dependent] += 1
+        return Response({'pie_details': counts})
