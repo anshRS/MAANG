@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const Test = () => {
   return (
-    <div className='w-full bg-black h-16 flex items-center justify-center gap-16'>
+    <div className='h-screen bg-black flex flex-col items-center justify-center gap-16 w-[250px]'>
       <Link href="" className='text-white'>
         Home
       </Link>
