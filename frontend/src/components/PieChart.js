@@ -19,8 +19,8 @@ function pie() {
         labels: ['New York', 'Las Vegas', 'Texas'],
         datasets: [
             {
-                data: [3, 6, 9],
-                backgroundColor: ['aqua','orange','green'],
+                data: [4, 6, 7],
+                backgroundColor: ['#364F6B','#3FC1C9','#1FAB89'],
                 hoverOffset: 4
             }
         ]
@@ -31,13 +31,16 @@ function pie() {
     const options = {
         plugins: {
             legend: {
-              position: 'left',
+                position: 'right',
+                labels: {
+                    boxWidth: 15
+                },
             },
-          },
+        },
     }
 
     return (
-        <div className='h-full w-full flex justify-center'>
+        <div className='h-fit w-fit flex justify-center'>
             <Pie
                 data = {data}
                 options = {options}
