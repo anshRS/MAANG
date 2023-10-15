@@ -8,26 +8,14 @@ import { useEffect, useState } from "react";
 import axiosInst from "@/utils/axios";
 
 export default function Home() {
-  const [numberOfRecords, setNumberOfRecords] = useState(0);
-  const [meanSalary, setmeanSalary] = useState(0);
-  const [medianSalary, setMedianSalary] = useState(0);
-  const [percentileSalary, setPercentileSalary] = useState({twentyfive:"",seventyfive:""});
+  
+  const [salary, setSalary] = useState({total_records:"",mean_salary:"",median_salary:"",twentyfive:"",seventyfive:""});
 
   useEffect(() => {
     async function fetchData() {
       try {
-        let response = await axiosInst.get("/api/v1/totalrecords");
-        setNumberOfRecords(response.data.total_records);
-        
-        response = await axiosInst.get("/api/v1/meansalary");
-        setmeanSalary(response.data.mean_salary);
-
-        response = await axiosInst.get("/api/v1/mediansalary");
-        setMedianSalary(response.data.median_salary);
-        
-        response = await axiosInst.get("/api/v1/percentilesalary");
-        setPercentileSalary(response.data);
-
+        const response = await axiosInst.get("/api/v1/salaryrecords");
+        setSalary(response.data);
       } catch (err) {
         console.log(err);
       }
@@ -45,11 +33,11 @@ export default function Home() {
 
         <div className="grid grid-cols-5 w-full items-center justify-center gap-4">
           
-            <Card title="Number of Records" value={numberOfRecords} />
-            <Card title="Mean Salary" value={meanSalary} />
-            <Card title="Median Salary" value={medianSalary} />
-            <Card title="25th Percentile Salary" value={percentileSalary.twentyfive} />
-            <Card title="75th Percentile Salary" value={percentileSalary.seventyfive} />
+            <Card title="Number of Records" value={salary.total_records} />
+            <Card title="Mean Salary" value={salary.mean_salary} />
+            <Card title="Median Salary" value={salary.median_salary} />
+            <Card title="25th Percentile Salary" value={salary.twentyfive} />
+            <Card title="75th Percentile Salary" value={salary.seventyfive} />
         
         </div>
 
