@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar.js"
 import Card from "@/components/Card.js"
 import { CardsData } from "@/constants/constants"
 import BarGraph from "@/components/BarGraph"
+import PieChart from "@/components/PieChart"
 
 
 
@@ -22,7 +23,9 @@ export default function Home() {
 
       <div className='flex w-full items-center justify-center gap-2.5 h-96 p-2'>
         <BarGraph/>
-        <div className='flex basis-1/3 items-center justify-center bg-black text-white rounded-lg h-full'>Sub Graph</div>
+        <div className='flex basis-1/3 items-center justify-center bg-black text-white rounded-lg h-full'>
+          <PieChart/>
+        </div>
       </div>
 
       <div className='flex w-full items-center justify-center gap-2.5 h-44 p-2'>
