@@ -37,7 +37,7 @@ def meanSalaryApi(request):
                 converted_data.append(converted_record)
 
             # Calculate average salary
-            total_salary = sum(record['PREVAILING_WAGE'] for record in converted_data)
+            total_salary = sum(record['PREVAILING_WAGE'] if record['PREVAILING_WAGE'] else 0 for record in converted_data)
             average_salary = total_salary / len(converted_data)
             average_salary=f"{average_salary:.2f}"
             return Response({'mean_salary':average_salary})  
@@ -59,7 +59,8 @@ def medianSalaryApi(request):
                     converted_record['PREVAILING_WAGE'] = record['PREVAILING_WAGE'] * 52
                 elif record['PW_UNIT_OF_PAY'] == 'Bi-Weekly':
                     converted_record['PREVAILING_WAGE'] = record['PREVAILING_WAGE'] * 26
-                converted_data.append(converted_record)
+                if converted_data:
+                    converted_data.append(converted_record)
 
             # Calculate median salary
             salaries = [record['PREVAILING_WAGE'] for record in converted_data]
@@ -85,7 +86,8 @@ def percentileSalaryApi(request):
                     converted_salary *= 52
                 elif record['PW_UNIT_OF_PAY'] == 'Bi-Weekly':
                     converted_salary *= 26
-                converted_salaries.append(converted_salary)
+                if converted_salary:
+                    converted_salaries.append(converted_salary)
             # Sort the salaries in ascending order.
             sorted_salaries = sorted(converted_salaries)   
             # Calculate the 25th percentile salary.
