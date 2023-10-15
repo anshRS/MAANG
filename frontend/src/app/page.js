@@ -39,9 +39,9 @@ export default function Home() {
 
   return (
     <>
-      <div className="h-screen bg-[#212121] flex items-center">
+      <div className="h-screen bg-[#060809] flex items-center">
         <Navbar />
-        <div className="w-full p-4 flex flex-col gap-3"> 
+        <div className="w-full p-4 flex flex-col gap-6"> 
 
         <div className="grid grid-cols-5 w-full items-center justify-center gap-4">
           
@@ -53,23 +53,23 @@ export default function Home() {
         
         </div>
 
-        <div className="grid grid-cols-3 gap-3 justify-center">
-          <div className="flex col-span-2 items-center justify-center rounded-xl bg-black p-4 h-80">
+        <div className="grid grid-cols-3 gap-4 justify-center">
+          <div className="flex col-span-2 items-center justify-center rounded-xl bg-[#0c1012] p-4 h-80">
             <LineChart />
           </div>
-            <div className="flex items-center justify-center bg-black p-4 text-white rounded-xl ">
+            <div className="flex items-center justify-center bg-[#0c1012] p-4 text-white rounded-xl ">
               Sub Graph
             </div>
         </div>
 
-        <div className="flex items-center justify-center gap-3 h-60 ">
-          <div className="flex basis-1/3 p-4 items-center justify-center bg-black text-white rounded-xl h-full">
+        <div className="flex items-center justify-center gap-4 h-60 ">
+          <div className="flex basis-1/3 p-4 items-center justify-center bg-[#0c1012] text-white rounded-xl h-full">
             <PieChart />
           </div>
-          <div className="flex basis-1/3 p-4 items-center justify-center bg-black text-white rounded-xl h-full">
+          <div className="flex basis-1/3 p-4 items-center justify-center bg-[#0c1012] text-white rounded-xl h-full">
             <BarGraph />
           </div>
-          <div className="flex basis-1/3 items-center justify-center bg-black text-white rounded-xl h-full">
+          <div className="flex basis-1/3 items-center justify-center bg-[#0c1012] text-white rounded-xl h-full">
             Main Graph
           </div>
         </div>

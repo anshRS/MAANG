@@ -27,14 +27,14 @@ function bar() {
             {
                 label: 'With H1B',
                 data: [3, 6, 9],
-                backgroundColor: 'aqua',
+                backgroundColor: '#3FC1C9',
                 borderColor: 'black',
                 borderWidth: 1
             },
             {
                 label: 'Without H1B',
                 data: [2, 12, 6],
-                backgroundColor: 'orange',
+                backgroundColor: '#364F6B',
                 borderColor: 'black',
                 borderWidth: 1
             }

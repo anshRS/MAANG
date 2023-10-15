@@ -23,9 +23,9 @@ function line() {
             {
                 label: 'With H1B',
                 data: [5, 2, 9],
-                backgroundColor: 'red',
-                borderColor: 'lime',
-                pointBorderColor: 'green',
+                backgroundColor: '#1FAB89',
+                borderColor: '#1FAB89',
+                pointBorderColor: 'white',
                 fill: true,
                 tension: 0.4
             },
@@ -33,8 +33,8 @@ function line() {
                 label: 'Without H1B',
                 data: [1, 7, 3],
                 backgroundColor: 'aqua',
-                borderColor: 'yellow',
-                pointBorderColor: 'orange',
+                borderColor: '#3FC1C9',
+                pointBorderColor: '#3FC1C9',
                 fill: true,
                 tension: 0.4
             }
