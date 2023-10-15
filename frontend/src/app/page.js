@@ -8,7 +8,8 @@ import BarGraph from "@/components/BarGraph"
 export default function Home() {
   return (
     <>
-    
+    <div className="h-screen bg-[#212121]">
+
       <Navbar />
 
       <div className='grid grid-cols-5 w-full items-center justify-center gap-4 p-2'>
@@ -29,6 +30,7 @@ export default function Home() {
         <div className='flex basis-1/3 items-center justify-center bg-black text-white rounded-lg h-full'>Main Graph</div>
         <div className='flex basis-1/3 items-center justify-center bg-black text-white rounded-lg h-full'>Main Graph</div>
       </div>
+    </div>
 
     
     </>

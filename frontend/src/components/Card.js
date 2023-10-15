@@ -2,7 +2,7 @@ import React from 'react'
 
 const Card = ({title}) => {
   return (
-    <div className='flex flex-col items-center p-4 bg-black text-white rounded-lg h-full hover:scale-105'>
+    <div className='flex flex-col items-center p-4 bg-[#424242] text-white rounded-lg h-full hover:scale-105'>
         <h1 className=' text-lg'>
         1,000,000
         </h1>
