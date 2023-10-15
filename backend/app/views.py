@@ -69,4 +69,19 @@ def GraphApi(request):
             print(h1b_dependent)
             if h1b_dependent:
                 counts[h1b_dependent] += 1
-        return Response({'pie_details': counts})
+        cnt = {}
+        for record in data:
+            state = record['WORKSITE_STATE']
+            h1b_dependent = record['H1B_DEPENDENT']
+
+            # Check if the 'WORKSITE_STATE' and 'H-1B_DEPENDENT' fields exist and are not None
+            if state is not None and h1b_dependent is not None:
+                if state not in cnt:
+                    cnt[state] = {'Y': 0, 'N': 0}
+                cnt[state][h1b_dependent] = cnt[state].get(h1b_dependent, 0) + 1
+
+        sorted_states = sorted(cnt.items(), key=lambda x: x[1]['Y'], reverse=True)
+
+        top_10_states = sorted_states[:10]
+
+        return Response({'pie_details': counts, "to10bar":top_10_states})
