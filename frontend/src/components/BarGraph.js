@@ -47,15 +47,11 @@ function bar() {
 
     return (
         
+        <Bar
+            data = {data}
+            options = {options}
+        ></Bar>
             
-
-
-            <div className='h-full w-full flex basis-2/3 items-center justify-center rounded-lg bg-black p-4'>
-                <Bar
-                    data = {data}
-                    options = {options}
-                ></Bar>
-            </div>
 
 
     )
