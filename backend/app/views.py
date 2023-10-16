@@ -66,7 +66,6 @@ def GraphApi(request):
         counts = {'Y': 0, 'N': 0}
         for record in data:
             h1b_dependent = record['H1B_DEPENDENT']
-            print(h1b_dependent)
             if h1b_dependent:
                 counts[h1b_dependent] += 1
         cnt = {}
@@ -82,6 +81,15 @@ def GraphApi(request):
 
         sorted_states = sorted(cnt.items(), key=lambda x: x[1]['Y'], reverse=True)
 
-        top_10_states = sorted_states[:10]
+        top_10_states = sorted_states[:5]
 
         return Response({'pie_details': counts, "to10bar":top_10_states})
+
+@api_view(['GET', 'POST'])
+def ListApi(request):
+    if request.method == 'GET':
+        records = VisaApplication.objects.all()  
+        record_serializer = VisaSerializer(records, many=True)   
+        data=record_serializer.data
+
+        return Response({})
