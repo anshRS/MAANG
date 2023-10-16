@@ -28,7 +28,7 @@ function bar() {
             try {
                 const response = await axiosInst.get('/api/v1/graphdata');
                 // console.log(response.data.to10bar)
-                // setBarChart(response.data.to10bar);    
+                setBarChart(response.data.to10bar);    
             } catch (error) {
                 console.error('Error fetching data:', error);
             }

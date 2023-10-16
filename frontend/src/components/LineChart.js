@@ -23,7 +23,7 @@ function line() {
         const fetchData = async () => {
             try {
                 const response = await axiosInst.get('/api/v1/listdata');
-                console.log(response.data.top5cities)
+                // console.log(response.data.top5cities)
                 setLineChart(response.data.top5cities);    
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -73,6 +73,12 @@ function line() {
     }
 
     const options = {
+        scales: {
+            y : {
+                max: 4400000,
+                min: 20000
+            }
+        }
 
     }
 
