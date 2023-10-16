@@ -118,5 +118,5 @@ def ListApi(request):
         average_salary_citywise = {city: city_wage[city] / city_count[city] for city in city_wage}
         sorted_cities = sorted(average_salary_citywise.items(), key=lambda x: x[1], reverse=True)
         top_5_cities = sorted_cities[:5]
-        top_5_cities=f"{top_5_cities:.2f}"
+
         return Response({'top5cities': top_5_cities})
