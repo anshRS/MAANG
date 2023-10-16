@@ -24,9 +24,9 @@ const ListComp = () => {
                         return
                     }
                     return(<>
-                        <div className='text-white flex justify-between text-start px-5 pt-2'>
+                        <div className='text-white flex justify-between items-center text-start px-5 py-2 bg-slate-800 mb-2 rounded-md'>
                             <h1>{item[0]}</h1>
-                            <p>{item[1]}</p>            
+                            <p>{(item[1]).toFixed(2)}</p>            
                             
                         </div>
                         </>
