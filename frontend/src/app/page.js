@@ -6,6 +6,7 @@ import LineChart from "@/components/LineChart";
 import PieChart from "@/components/PieChart";
 import { useEffect, useState } from "react";
 import axiosInst from "@/utils/axios";
+import ListComp from "@/components/ListComp";
 
 export default function Home() {
   
@@ -46,19 +47,19 @@ export default function Home() {
             <LineChart />
           </div>
             <div className="flex items-center justify-center bg-[#0c1012] p-4 text-white rounded-xl ">
-              Sub Graph
+              <PieChart />
             </div>
         </div>
 
         <div className="flex items-center justify-center gap-4 h-60 ">
-          <div className="flex basis-1/3 p-4 items-center justify-center bg-[#0c1012] text-white rounded-xl h-full">
-            <PieChart />
+          <div className="flex basis-1/3 p-2 items-center justify-center bg-[#0c1012] text-white rounded-xl h-full">
+          <ListComp/>
           </div>
           <div className="flex basis-1/3 p-4 items-center justify-center bg-[#0c1012] text-white rounded-xl h-full">
             <BarGraph />
           </div>
           <div className="flex basis-1/3 items-center justify-center bg-[#0c1012] text-white rounded-xl h-full">
-            Main Graph
+            
           </div>
         </div>
       </div>
